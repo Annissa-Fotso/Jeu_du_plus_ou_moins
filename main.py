@@ -4,6 +4,11 @@ def menu_mode ():
     print ("")
     print ("1. Nombre mystere")
     print ("2. Annee mystere")
+def menu_niveau ():
+    print ("1. Facile (tentatives illimitees)")
+    print ("2. Moyen (10 tentatives)")
+    print ("3. Difficile (5 tentatives)")
+    print ("4. Divin (3 tentatives)")
 while True :
     menu_mode ()
     mode = input ("choisissez votre mode de jeu : " )
@@ -15,12 +20,6 @@ while True :
         break
     else :
         print ("Entree invalide, entrez 1 ou 2")
-
-def menu_niveau ():
-    print ("1. Facile (tentatives illimitees)")
-    print ("2. Moyen (10 tentatives)")
-    print ("3. Difficile (5 tentatives)")
-    print ("4. Divin (3 tentatives)")
 while True :
     menu_niveau()
     choix_menu = input("Choisissez un niveau de 1 à 4 : ")
@@ -46,24 +45,6 @@ while True :
         break
     else:
         print ("Entree invalide, choisissez un nombre entre 1 et 4")
-nombre_secret = 100
-tentative_utilisee = 0
-print ("")
-print ("Devinez le nombre")
-print ("")
-print ("Le nombre mystère est entre 1 et 100 ")
-while True: 
-   if tentative_max is not None:
-    restante = tentative_max - tentative_utilisee
-    print ("Tentatives restantes : ", restante )
-   saisie = input ("Entrez votre réponse : ")
-   try:
-      reponse = int (saisie)
-   except:
-      print ("Entree invalide, veuillez saisir un nombre entier . ")
-      continue
-   tentative_utilisee = tentative_utilisee + 1
-
    
 
 
