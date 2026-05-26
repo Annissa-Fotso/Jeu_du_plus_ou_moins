@@ -45,6 +45,77 @@ while True :
         break
     else:
         print ("Entree invalide, choisissez un nombre entre 1 et 4")
+
+if mode == "1":
+    nombre_secret = 100
+    tentative_utilisee = 0
+    print ("")
+    print ("Devinez le nombre")
+    print ("")
+    print ("Le nombre mystère est entre 1 et 100 ")
+    while True: 
+        if tentative_max is not None:
+            restante = tentative_max - tentative_utilisee
+            print ("Tentatives restantes : ", restante )
+            saisie = input ("Entrez votre réponse : ")
+            try:
+                reponse = int (saisie)
+            except:
+                print ("Entree invalide, veuillez saisir un nombre entier . ")
+                continue
+        tentative_utilisee = tentative_utilisee + 1
+        if reponse == nombre_secret :
+            print ("")
+            print (" BINGO!! Felicitations")
+            print ("Vous avez trouvé en ", tentative_utilisee , "tentative(s)" )
+            break
+        elif  reponse < nombre_secret :
+            print ("C'est plus grand")
+        else:
+            print ("C'est plus petit")
+
+        if tentative_max is not None :
+            if tentative_utilisee >= tentative_max :
+                print ("")
+                print ("Dommage!! vous avez epuise vos", tentative_max , "tentative(s)")
+                print ("Vous avez perdu!! la bonne reponse etait : ", nombre_secret )
+                break
+elif mode == "2":
+    annee_secrete = 2022
+    tentative_utilisee = 0
+    print ("")
+    print ("Devinez l'annee")
+    print ("")
+    print ("l'annee mystere est entre 1990 et 2025")
+    while True: 
+        if tentative_max is not None:
+            restante = tentative_max - tentative_utilisee
+            print ("Tentatives restantes : ", restante )
+            saisie = input ("Entrez votre réponse : ")
+            try:
+                reponse = int (saisie)
+            except:
+                print ("Entree invalide, veuillez saisir un nombre entier . ")
+                continue
+        tentative_utilisee = tentative_utilisee + 1
+        if reponse == annee_secrete:
+            print ("")
+            print (" BINGO!! Felicitations")
+            print ("Vous avez trouvé en ", tentative_utilisee , "tentative(s)" )
+            break
+        elif  reponse < annee_secrete :
+            print ("C'est plus grand")
+        else:
+            print ("C'est plus petit")
+
+        if tentative_max is not None :
+            if tentative_utilisee >= tentative_max :
+                print ("")
+                print ("Dommage!! vous avez epuise vos", tentative_max , "tentative(s)")
+                print ("Vous avez perdu!! la bonne reponse etait : ", annee_secrete )
+                break
+
+
    
 
 
