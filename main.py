@@ -69,16 +69,16 @@ while True :
         print ("")
         print ("Le nombre mystère est entre 1 et 100 ")
         while True: 
+            if tentative_max is not None:
+                restante = tentative_max - tentative_utilisee
+                print ("Tentatives restantes : ", restante )
+            tentative_utilisee = tentative_utilisee + 1
             saisie = input ("Entrez votre réponse : ")
             try:
                 reponse = int (saisie)
             except:
                 print ("Entree invalide, veuillez saisir un nombre entier . ")
                 continue
-            if tentative_max is not None:
-                restante = tentative_max - tentative_utilisee
-                print ("Tentatives restantes : ", restante )
-            tentative_utilisee = tentative_utilisee + 1
             if reponse == nombre_secret :
                 print ("")
                 print (" BINGO!! Felicitations")
@@ -121,16 +121,16 @@ while True :
         print ("")
         print ("l'annee mystere est entre 1990 et 2025")
         while True:
+            if tentative_max is not None:
+                restante = tentative_max - tentative_utilisee
+                print ("Tentatives restantes : ", restante )
+            tentative_utilisee = tentative_utilisee + 1
             saisie = input ("Entrez votre réponse : ")
             try:
                 reponse = int (saisie)
             except:
                 print ("Entree invalide, veuillez saisir un nombre entier . ")
                 continue 
-            if tentative_max is not None:
-                restante = tentative_max - tentative_utilisee
-                print ("Tentatives restantes : ", restante )
-            tentative_utilisee = tentative_utilisee + 1
             if reponse == annee_secrete:
                 print ("")
                 print (" BINGO!! Felicitations")
