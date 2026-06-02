@@ -1,3 +1,5 @@
+from nombre_mystere import jouer_nombre
+from annee_mystere import jouer_annee
 historique_session = []
 def menu_mode ():
     print ("")
@@ -9,17 +11,7 @@ def menu_niveau ():
     print ("1. Facile (tentatives illimitees)")
     print ("2. Moyen (10 tentatives)")
     print ("3. Difficile (5 tentatives)")
-    print ("4. Divin (3 tentatives)")
-def afficher_historique ():
-    print ("")
-    print ("Historique de la partie")
-    print ("")
-    if len (historique_session) == 0 :
-        print ("Historique vide")
-        return
-    else :
-        for partie in historique_session:
-            print (partie)  
+    print ("4. Divin (3 tentatives)") 
 
 while True :
 
@@ -33,8 +25,7 @@ while True :
             print ("Vous avez choisi le mode Annee mystere")
             break
         else :
-            print ("Entree invalide, entrez 1 ou 2")
-       
+            print ("Entree invalide, entrez 1 ou 2") 
     while True :
         menu_niveau()
         choix_menu = input("Choisissez un niveau de 1 à 4 : ")
@@ -62,109 +53,10 @@ while True :
             print ("Entree invalide, choisissez un nombre entre 1 et 4")
 
     if mode == "1":
-        nombre_secret = 100
-        tentative_utilisee = 0
-        print ("")
-        print ("Devinez le nombre")
-        print ("")
-        print ("Le nombre mystère est entre 1 et 100 ")
-        while True: 
-            if tentative_max is not None:
-                restante = tentative_max - tentative_utilisee
-                print ("Tentatives restantes : ", restante )
-            tentative_utilisee = tentative_utilisee + 1
-            saisie = input ("Entrez votre réponse : ")
-            try:
-                reponse = int (saisie)
-            except:
-                print ("Entree invalide, veuillez saisir un nombre entier . ")
-                continue
-            if reponse == nombre_secret :
-                print ("")
-                print (" BINGO!! Felicitations")
-                print ("Vous avez trouvé le nombre mystere en ", tentative_utilisee , "tentative(s)" )
-                resultat = "GAGNE"
-                partie = {
-                "Mode" : mode ,
-                "Niveau": niveau,
-                "Tentatives": tentative_utilisee,
-                "Resultat": resultat,
-                }
-                historique_session.append(partie)
-                afficher_historique ()
-                break
-            elif  reponse < nombre_secret :
-                print ("C'est plus grand")
-            else:
-                print ("C'est plus petit")
-
-            if tentative_max is not None :
-                if tentative_utilisee >= tentative_max :
-                    print ("")
-                    print ("Dommage!! vous avez epuise vos", tentative_max , "tentative(s)")
-                    print ("Vous avez perdu!! la bonne reponse etait : ", nombre_secret )
-                    resultat = "PERDU"
-                    partie = {
-                    "Mode" : mode ,
-                    "Niveau": niveau,
-                    "Tentatives": tentative_utilisee,
-                    "Resultat": resultat,
-                    }
-                    historique_session.append(partie)
-                    afficher_historique ()
-                    break
+        jouer_nombre(niveau, tentative_max, historique_session)
     elif mode == "2":
-        annee_secrete = 2022
-        tentative_utilisee = 0
-        print ("")
-        print ("Devinez l'annee")
-        print ("")
-        print ("l'annee mystere est entre 1990 et 2025")
-        while True:
-            if tentative_max is not None:
-                restante = tentative_max - tentative_utilisee
-                print ("Tentatives restantes : ", restante )
-            tentative_utilisee = tentative_utilisee + 1
-            saisie = input ("Entrez votre réponse : ")
-            try:
-                reponse = int (saisie)
-            except:
-                print ("Entree invalide, veuillez saisir un nombre entier . ")
-                continue 
-            if reponse == annee_secrete:
-                print ("")
-                print (" BINGO!! Felicitations")
-                print ("Vous avez trouvé l'annee mystere en ", tentative_utilisee , "tentative(s)" )
-                resultat = "GAGNE"
-                partie = {
-                "Mode" : mode ,
-                "Niveau": niveau,
-                "Tentatives": tentative_utilisee,
-                "Resultat": resultat,
-                }
-                historique_session.append(partie)
-                afficher_historique ()
-                break
-            elif  reponse < annee_secrete :
-                print ("C'est plus grand")
-            else:
-                print ("C'est plus petit")
-
-            if tentative_max is not None :
-                if tentative_utilisee >= tentative_max :
-                    print ("")
-                    print ("Dommage!! vous avez epuise vos", tentative_max , "tentative(s)")
-                    print ("Vous avez perdu!! la bonne reponse etait : ", annee_secrete )
-                    resultat = "PERDU"
-                    partie = {
-                    "Mode" : mode ,
-                    "Niveau": niveau,
-                    "Tentatives": tentative_utilisee,
-                    "Resultat": resultat,
-                    }
-                    historique_session.append(partie)
-                    afficher_historique ()
-                    break
+        jouer_annee(niveau , tentative_max , historique_session)
+    
     print ("")
     print("1. Rejouer ")
     print ("2. Quitter")
