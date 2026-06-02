@@ -8,24 +8,18 @@ def afficher_historique (historique_session):
         print ("Historique vide")
         return
     for partie in historique_session:
-        print ("Mode :", partie ["Mode"])
-        print ("Niveau :", partie ["Niveau"])
-        print ("MTentatives :", partie ["Tentatives"])
-        print ("Resultat :", partie ["Resultat"]) 
-        print ("================================") 
+        print (partie) 
 def jouer_annee(niveau, tentative_max,historique_session):
     annee_secrete = random.randint(1990, 2025)
     tentative_utilisee = 0
-    print ("")
-    print ("Annee Mystere")
     print ("")
     print ("l'annee mystere est entre 1990 et 2025")
     while True:
         if tentative_max is not None:
             restante = tentative_max - tentative_utilisee
             print ("Tentatives restantes : ", restante )
-            tentative_utilisee = tentative_utilisee + 1
-            saisie = input ("Entrez votre réponse : ")
+        tentative_utilisee = tentative_utilisee + 1
+        saisie = input ("Entrez votre réponse : ")
         try:
             reponse = int (saisie)
         except:
@@ -35,14 +29,13 @@ def jouer_annee(niveau, tentative_max,historique_session):
             print ("")
             print (" BINGO!! Felicitations")
             print ("Vous avez trouvé l'annee mystere en ", tentative_utilisee , "tentative(s)" )
-            resultat = "GAGNE"
             partie = {
                 "Mode"      : "Annee mystere",
                 "Niveau"    : niveau,
                 "Tentatives": tentative_utilisee,
-                "Resultat"  : resultat,
+                "Resultat"  : "GAGNE",
             }
-            historique_session.apend(partie)
+            historique_session.append(partie)
             afficher_historique(historique_session)
             return 
         elif  reponse < annee_secrete :
@@ -55,14 +48,13 @@ def jouer_annee(niveau, tentative_max,historique_session):
                 print ("")
                 print ("Dommage!! vous avez epuise vos", tentative_max , "tentative(s)")
                 print ("Vous avez perdu!! la bonne reponse etait : ", annee_secrete )
-                resultat = "PERDU"
                 partie = {
                 "Mode"      : "Annee mystere",
                 "Niveau"    : niveau,
                 "Tentatives": tentative_utilisee,
-                "Resultat"  : resultat,
-            }
-            historique_session.apend(partie)
-            afficher_historique(historique_session)
-            return
+                "Resultat"  : "PERDU",
+                }
+                historique_session.append(partie)
+                afficher_historique(historique_session)
+                return
 
